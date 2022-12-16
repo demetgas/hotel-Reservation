@@ -1,0 +1,48 @@
+import express from "express";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import confirmRoute from "./routes/confirm.js";
+import hotelsRoute from "./routes/hotels.js";
+import roomsRoute from "./routes/rooms.js";
+import usersRoute from "./routes/users.js";
+export const app = express();
+app.use(express.json());
+dotenv.config();
+const connect = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO);
+  } catch (error) {
+    throw error;
+  }
+};
+
+mongoose.connection.on("disconnected", () => {
+  console.log("mongoDB is disconnected");
+});
+
+mongoose.connection.on("connected", () => {
+  console.log("mongoDB is connected");
+});
+
+//taking a user request and giving a response
+app.get("/", (req, res) => {
+  res.send("got the first request out");
+});
+
+// MiddleWare --> requesting an object, responding to an object, and moving to the next middleware function
+app.use("/api/confirm", confirmRoute);
+app.use("/api/hotels", hotelsRoute);
+app.use("/api/rooms", roomsRoute);
+app.use("/api/users", usersRoute);
+
+// MiddleWare for sending json objects
+
+app.use(express.json());
+
+//
+
+app.listen(8800, () => {
+  connect();
+  console.log("in touch with backend!");
+});
+mongoose.set("strictQuery", false);
