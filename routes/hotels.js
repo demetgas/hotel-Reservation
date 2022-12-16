@@ -11,7 +11,7 @@ router.post("/", async (req, res) => {
   try {
     const savedHotel = await newHotel.save();
     res.status(200).json(savedHotel);
-   } catch (e) {
+  } catch (e) {
     res.status(500).json(e);
     //500 is a server error, here if an error occurs we will handle and specify them and we will handle them using express middlewares
   }
