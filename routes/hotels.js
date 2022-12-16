@@ -65,12 +65,12 @@ router.get("/:id", async (req, res) => {
 
 //getting all the hotels that exist
 
-router.get("/:id", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    await hotel.findById(req.params.id);
+    await hotels.find();
 
     //if its succesfull we will get the hotel
-    res.status(200).json(hotel);
+    res.status(200).json(hotels);
 
     //if not we will have an error
   } catch (e) {
