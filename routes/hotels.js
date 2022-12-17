@@ -48,11 +48,12 @@ router.put("/:id", async (req, res) => {
     res.status(500).json(e);
   }
 });
+
 //getting a specific hotel
 
 router.get("/:id", async (req, res) => {
   try {
-    await hotel.findById(req.params.id);
+    const hotel = await Hotel.findById(req.params.id);
 
     //if its succesfull we will get the hotels
     res.status(200).json(hotel);
@@ -67,7 +68,7 @@ router.get("/:id", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    await hotels.find();
+   const hotels = await Hotel.find();
 
     //if its succesfull we will get the hotel
     res.status(200).json(hotels);
