@@ -6,8 +6,11 @@ import hotelsRoute from "./routes/hotels.js";
 import roomsRoute from "./routes/rooms.js";
 import usersRoute from "./routes/users.js";
 export const app = express();
+
+// MiddleWare for sending json objects
 app.use(express.json());
 dotenv.config();
+
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO);
@@ -34,10 +37,6 @@ app.use("/api/confirm", confirmRoute);
 app.use("/api/hotels", hotelsRoute);
 app.use("/api/rooms", roomsRoute);
 app.use("/api/users", usersRoute);
-
-// MiddleWare for sending json objects
-
-app.use(express.json());
 
 //
 
