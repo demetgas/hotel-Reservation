@@ -7,7 +7,7 @@ import roomsRoute from "./routes/rooms.js";
 import usersRoute from "./routes/users.js";
 export const app = express();
 
-// MiddleWare for sending json objects
+// MiddleWare for sending json objects, they are important bc they can reach requests and responds before sending anything to the users
 app.use(express.json());
 dotenv.config();
 
