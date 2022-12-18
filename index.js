@@ -38,7 +38,16 @@ app.use("/api/hotels", hotelsRoute);
 app.use("/api/rooms", roomsRoute);
 app.use("/api/users", usersRoute);
 
-//
+app.use((e, req, res, next) => {
+  const eStatus = e.status || 500;
+  const eMessage = e.message || "Error";
+  return res.status(eStatus).json({
+    success: false,
+    status: eStatus,
+    message: eMessage,
+    stack: e.stack,
+  });
+});
 
 app.listen(8800, () => {
   connect();

@@ -66,7 +66,7 @@ router.get("/:id", async (req, res) => {
 
 //getting all the hotels that exist
 
-router.get("/", async (req, res) => {
+router.get("/", async (req, res,next) => {
   try {
     const hotels = await Hotel.find();
 
