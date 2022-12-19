@@ -21,9 +21,13 @@ export const register = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
   try {
-    const user = User.find({username:req.body.username})
+    const user = await User.find({username:req.body.username})
     if(!user) return next(createError(404,"User not found"))
-    res.status(201).send("user successfully registered");
+
+    const isPwdCorrect = await bcrypt.compare(req.body.pwd, user.pwd)
+    if(!isPwdCorrect) return next(createError(400,"Wrong password or username"))
+
+    res.status(201).json(user);
   } catch (e) {
     next(e);
   }
