@@ -1,5 +1,6 @@
 import User from "../../modelsof/User.js";
 import bcrypt from "bcryptjs";
+import {createError} from "../../utils/error.js"
 
 export const register = async (req, res, next) => {
   try {
@@ -21,7 +22,7 @@ export const register = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
   try {
-    const user = await User.find({username:req.body.username})
+    const user = await User.findOne({username:req.body.username})
     if(!user) return next(createError(404,"User not found"))
 
     const isPwdCorrect = await bcrypt.compare(req.body.pwd, user.pwd)
