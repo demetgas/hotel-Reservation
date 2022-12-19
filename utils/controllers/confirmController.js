@@ -27,8 +27,9 @@ export const login = async (req, res, next) => {
 
     const isPwdCorrect = await bcrypt.compare(req.body.pwd, user.pwd)
     if(!isPwdCorrect) return next(createError(400,"Wrong password or username"))
-
-    res.status(201).json(user);
+    // password and isAdmin features won't be shown 
+    const {pwd,isAdmin, ...otherDetails}=user._doc;
+    res.status(201).json(otherDetails);
   } catch (e) {
     next(e);
   }
