@@ -1,8 +1,7 @@
 import express from "express";
+import { register } from "../utils/controllers/confirmController.js";
 
 const router = express.Router();
 
-router.get("/", (req,res)=>{
-    res.send("Hello, this is confirm endpoing")
-})
-export default router
+router.post("/register", register);
+export default router;
