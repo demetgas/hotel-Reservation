@@ -65,7 +65,7 @@ export const getAllHotels = async (req, res, next) => {
     //if its succesfull we will get the hotel
     res.status(200).json(hotels);
 
-    //if not we will have an error
+    //if not we will have  an error
   } catch (e) {
     next(e);
   }
