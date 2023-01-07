@@ -23,6 +23,11 @@ const connect = async () => {
   }
 };
 
+app.listen(8800, () => {
+  connect();
+  console.log("in touch with backend!");
+});
+
 mongoose.connection.on("disconnected", () => {
   console.log("mongoDB is disconnected");
 });
@@ -31,10 +36,7 @@ mongoose.connection.on("connected", () => {
   console.log("mongoDB is connected");
 });
 
-//taking a user request and giving a response
-app.get("/", (req, res) => {
-  res.send("got the first request out");
-});
+
 
 // MiddleWare --> requesting an object, responding to an object, and moving to the next middleware function
 app.use("/api/confirm", confirmRoute);
@@ -53,8 +55,5 @@ app.use((e, req, res, next) => {
   });
 });
 
-app.listen(8800, () => {
-  connect();
-  console.log("in touch with backend!");
-});
+
 mongoose.set("strictQuery", false);
