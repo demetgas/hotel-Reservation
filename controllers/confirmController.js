@@ -1,6 +1,6 @@
-import User from "../../modelsof/User.js";
+import User from "../modelsof/User.js";
 import bcrypt from "bcryptjs";
-import { createError } from "../../utils/error.js";
+import { createError } from "../utils/error.js";
 import jwt from "jsonwebtoken";
 
 export const register = async (req, res, next) => {
@@ -28,9 +28,20 @@ export const login = async (req, res, next) => {
     const isPwdCorrect = await bcrypt.compare(req.body.pwd, user.pwd);
     if (!isPwdCorrect)
       return next(createError(400, "Wrong password or username"));
+
+    const token = jwt.sign(
+      { id: user._id, isAdmin: user.isAdmin },
+      process.env.JWT
+    );
+
     // pwd and isAdmin features won't be shown
     const { pwd, isAdmin, ...otherDetails } = user._doc;
-    res.status(201).json(otherDetails);
+    res
+      .cookie("access_token", token, {
+        httpOnly: true,
+      })
+      .status(201)
+      .json(otherDetails);
   } catch (e) {
     next(e);
   }

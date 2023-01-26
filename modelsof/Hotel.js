@@ -41,7 +41,7 @@ const hotelSchema = new mongoose.Schema({
   },
   rooms: {
     type: [String],
-     required: false,
+    required: false,
   },
   lowestprice: {
     type: Number,
@@ -55,4 +55,3 @@ const hotelSchema = new mongoose.Schema({
 });
 
 export default mongoose.model("Hotel", hotelSchema);
-

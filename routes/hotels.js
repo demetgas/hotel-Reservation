@@ -6,7 +6,7 @@ import {
   getAllHotels,
   getHotel,
   updateHotel,
-} from "../utils/controllers/hotelController.js";
+} from "../controllers/hotelController.js";
 
 const router = express.Router();
 
@@ -24,5 +24,4 @@ router.get("/:id", getHotel);
 
 // getting all the hotels that exist
 router.get("/", getAllHotels);
-
 export default router;
