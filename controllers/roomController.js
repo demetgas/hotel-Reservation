@@ -54,10 +54,10 @@ export const updateRoom = async (req, res, next) => {
 //Getting a specific Room
 export const getRoom = async (req, res, next) => {
   try {
-    const Room = await Room.findById(req.params.id);
+    const room = await Room.findById(req.params.id);
 
     //if its succesfull we will get the Rooms
-    res.status(200).json(Room);
+    res.status(200).json(room);
 
     //if not we will have an error
   } catch (e) {
