@@ -20,7 +20,7 @@ router.delete("/:id", verifyAdmin, deleteRoom);
 // updating existing rooms
 router.put("/:id", verifyAdmin, updateRoom);
 
-// getting a specific hotel
+// getting a specific room
 router.get("/:id", getRoom);
 
 // getting all the rooms that exist

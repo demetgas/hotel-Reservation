@@ -1,15 +1,16 @@
 import Room from "../modelsof/Room.js";
+import Hotel from "../modelsof/Hotel.js";
 import { createError } from "../utils/error.js";
 
 //Creating a room
 export const createRoom = async (req, res, next) => {
-  const RoomId = req.params.RoomId;
+  const hotelId = req.params.hotelid;
   const newRoom = new Room(req.body);
 
   try {
     const savedRoom = await newRoom.save();
     try {
-      await Room.findByIdAndUpdate(RoomId, {
+      await Hotel.findByIdAndUpdate(hotelId, {
         $push: { rooms: savedRoom._id },
       });
     } catch (e) {
@@ -22,8 +23,16 @@ export const createRoom = async (req, res, next) => {
 };
 //Deleting a room
 export const deleteRoom = async (req, res, next) => {
+  const hotelId = req.params.hotelId;
   try {
     await Room.findByIdAndDelete(req.params.id);
+    try {
+        await Hotel.findByIdAndUpdate(hotelId, {
+          $pull: { rooms: req.params.id },
+        });
+      } catch (err) {
+        next(err);
+      }
     //if its succesfull we will delete the Room
     res.status(200).json("You just deleted the Room.");
     //if not we will have an error
