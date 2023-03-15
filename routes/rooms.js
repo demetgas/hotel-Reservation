@@ -15,7 +15,7 @@ const router = express.Router();
 router.post("/:hotelid", verifyAdmin, createRoom);
 
 // deleting existing rooms
-router.delete("/:id", verifyAdmin, deleteRoom);
+router.delete("/:id/:hotelid", verifyAdmin, deleteRoom);
 
 // updating existing rooms
 router.put("/:id", verifyAdmin, updateRoom);

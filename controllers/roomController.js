@@ -27,12 +27,12 @@ export const deleteRoom = async (req, res, next) => {
   try {
     await Room.findByIdAndDelete(req.params.id);
     try {
-        await Hotel.findByIdAndUpdate(hotelId, {
-          $pull: { rooms: req.params.id },
-        });
-      } catch (e) {
-        next(e);
-      }
+      await Hotel.findByIdAndUpdate(hotelId, {
+        $pull: { rooms: req.params.id },
+      });
+    } catch (e) {
+      next(e);
+    }
     //if its succesfull we will delete the Room
     res.status(200).json("You just deleted the Room.");
     //if not we will have an error
