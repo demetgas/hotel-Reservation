@@ -67,10 +67,10 @@ export const getRoom = async (req, res, next) => {
 //Getting all the Rooms that exist
 export const getAllRooms = async (req, res, next) => {
   try {
-    const Rooms = await Room.find();
+    const rooms = await Room.find();
 
     //if its succesfull we will get the Room
-    res.status(200).json(Rooms);
+    res.status(200).json(rooms);
 
     //if not we will have  an error
   } catch (e) {
