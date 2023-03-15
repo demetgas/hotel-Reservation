@@ -1,10 +1,9 @@
 import mongoose from "mongoose";
 
-const UserSchema = new mongoose.Schema({
-  username: {
+const RoomSchema = new mongoose.Schema({
+  title: {
     type: String,
-    required: false,
-    unique: true,
+    required: false
   },
   email: {
     type: String,
@@ -22,4 +21,4 @@ const UserSchema = new mongoose.Schema({
   },
 },{timestamps:true});
 
-export default mongoose.model("User", UserSchema);
+export default mongoose.model("Room", RoomSchema);
