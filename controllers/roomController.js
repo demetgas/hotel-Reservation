@@ -13,12 +13,12 @@ export const createRoom = async (req, res, next) => {
       await Room.findByIdAndUpdate(RoomId, {
         $push: { rooms: savedRoom._id },
       });
-    } catch (err) {
-      next(err);
+    } catch (e) {
+      next(e);
     }
     res.status(200).json(savedRoom);
-  } catch (err) {
-    next(err);
+  } catch (e) {
+    next(e);
   }
 };
 //Deleting a room
@@ -32,6 +32,7 @@ export const deleteRoom = async (req, res, next) => {
     next(e);
   }
 };
+
 //Updating existing Rooms
 export const updateRoom = async (req, res, next) => {
   try {
