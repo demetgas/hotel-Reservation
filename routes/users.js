@@ -21,7 +21,6 @@ router.get("/checkadmin/:id", verifyAdmin, (req, res, next) => {
   res.send("You are logged in and can delete all accounts!");
 });*/
 
-
 // deleting existing Users
 router.delete("/:id", verifyUser, deleteUser);
 
