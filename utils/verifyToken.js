@@ -6,7 +6,7 @@ export const verifyToken = (req,res,next)=>{
     if(!token){
         return next(createError(401,"Authentication failed!"))
     }
-    jwt.verify(token,process.env.JWT,(err,user)=>(
-        
-    ))
+    jwt.verify(token,process.env.JWT,(err,user)=>{
+        if(err) return next(createError(403,"Authentication failed"))
+    })
 }
