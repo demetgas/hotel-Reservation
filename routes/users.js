@@ -5,8 +5,13 @@ import {
   getUser,
   updateUser,
 } from "../controllers/userController.js";
+import { verifyToken } from "../utils/verifyToken.js";
 
 const router = express.Router();
+
+router.get("/checkconfirm", verifyToken, (req, res, next) => {
+  
+});
 
 // deleting existing Users
 router.delete("/:id", deleteUser);
