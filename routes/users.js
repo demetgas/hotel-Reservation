@@ -10,7 +10,11 @@ import { verifyToken } from "../utils/verifyToken.js";
 const router = express.Router();
 
 router.get("/checkconfirm", verifyToken, (req, res, next) => {
- res.send("You are logged in!") 
+  res.send("You are logged in!");
+});
+
+router.get("/checkuser/:id", verifyUser, (req, res, next) => {
+  res.send("You are logged in and can delete your account!");
 });
 
 // deleting existing Users
