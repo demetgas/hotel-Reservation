@@ -1,11 +1,18 @@
 import express from "express";
-import { createRoom, deleteRoom, getAllRooms, getRoom, updateRoom } from "../controllers/roomController";
-import {verifyAdmin} from "../utils/verifyToken"
+import Room from "../modelsof/Room.js";
+import {
+  createRoom,
+  deleteRoom,
+  getAllRooms,
+  getRoom,
+  updateRoom,
+} from "../controllers/roomController.js";
+import { verifyAdmin } from "../utils/verifyToken.js";
 
 const router = express.Router();
 
 // creating  new rooms
-router.post("/", verifyAdmin, createRoom);
+router.post("/:hotelid", verifyAdmin, createRoom);
 
 // deleting existing rooms
 router.delete("/:id", verifyAdmin, deleteRoom);
@@ -19,4 +26,4 @@ router.get("/:id", getRoom);
 // getting all the rooms that exist
 router.get("/", getAllRooms);
 
-export default router
+export default router;
