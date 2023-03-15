@@ -1,21 +1,22 @@
 import express from "express";
+import { createRoom, deleteRoom, getAllRooms, getRoom, updateRoom } from "../controllers/roomController";
 import {verifyAdmin} from "../utils/verifyToken"
 
 const router = express.Router();
 
-// creating  new hotels
+// creating  new rooms
 router.post("/", verifyAdmin, createRoom);
 
-// deleting existing hotels
-router.delete("/:id", verifyAdmin, deleteHotel);
+// deleting existing rooms
+router.delete("/:id", verifyAdmin, deleteRoom);
 
-// updating existing hotels
-router.put("/:id", verifyAdmin, updateHotel);
+// updating existing rooms
+router.put("/:id", verifyAdmin, updateRoom);
 
 // getting a specific hotel
-router.get("/:id", getHotel);
+router.get("/:id", getRoom);
 
-// getting all the hotels that exist
-router.get("/", getAllHotels);
+// getting all the rooms that exist
+router.get("/", getAllRooms);
 
 export default router
