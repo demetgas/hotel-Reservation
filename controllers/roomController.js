@@ -23,7 +23,7 @@ export const createRoom = async (req, res, next) => {
 };
 //Deleting a room
 export const deleteRoom = async (req, res, next) => {
-  const hotelId = req.params.hotelId;
+  const hotelId = req.params.hotelid;
   try {
     await Room.findByIdAndDelete(req.params.id);
     try {
@@ -40,6 +40,7 @@ export const deleteRoom = async (req, res, next) => {
     next(e);
   }
 };
+
 
 //Updating existing Rooms
 export const updateRoom = async (req, res, next) => {
