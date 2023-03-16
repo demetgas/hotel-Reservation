@@ -41,7 +41,6 @@ export const deleteRoom = async (req, res, next) => {
   }
 };
 
-
 //Updating existing Rooms
 export const updateRoom = async (req, res, next) => {
   try {
