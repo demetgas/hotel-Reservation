@@ -85,8 +85,8 @@ export const countByCity = async (req, res, next) => {
   }
 };
 
-export const countByCity = async (req, res, next) => {
-  const cities = req.query.cities.split(",");
+export const countByType = async (req, res, next) => {
+  const hotelCount = Hotel.countDocuments({type:"hotelname"})
   try {
     const list = await Promise.all(
       cities.map((cityname) => {
