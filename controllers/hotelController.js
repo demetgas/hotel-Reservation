@@ -60,7 +60,7 @@ export const getHotel = async (req, res, next) => {
 //Getting all the hotels that exist
 export const getAllHotels = async (req, res, next) => {
   try {
-    const hotels = await Hotel.find(req.query);
+    const hotels = await Hotel.find(req.query).limit(req.query.limit);
 
     //if its succesfull we will get the hotel
     res.status(200).json(hotels);
