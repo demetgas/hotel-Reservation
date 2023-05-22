@@ -26,7 +26,7 @@ router.get("/:id", getHotel);
 
 // getting all the hotels that exist
 router.get("/", getAllHotels);
-router.get("/", getAllHotels);
-router.get("/", getAllHotels);
+router.get("/countByCity", getAllHotels);
+router.get("/countByType", getAllHotels);
 
 export default router;
