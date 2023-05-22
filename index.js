@@ -6,6 +6,8 @@ import hotelsRoute from "./routes/hotels.js";
 import roomsRoute from "./routes/rooms.js";
 import usersRoute from "./routes/users.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
+
 
 export const app = express();
 app.use(cookieParser());
@@ -13,6 +15,7 @@ app.use(cookieParser());
 // MiddleWare for sending json objects,
 // they are important bc they can reach requests and responds
 // before sending anything to the users
+app.use(cors());
 
 app.use(express.json());
 dotenv.config();
