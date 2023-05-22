@@ -79,7 +79,7 @@ export const countByCity = async (req, res, next) => {
         return Hotel.countDocuments({ city: city });
       })
     );
-    res.status(200).json(hotels);
+    res.status(200).json(list);
 
     //if not we will have  an error
   } catch (e) {
