@@ -80,8 +80,6 @@ export const countByCity = async (req, res, next) => {
       })
     );
     res.status(200).json(list);
-
-    //if not we will have  an error
   } catch (e) {
     next(e);
   }
