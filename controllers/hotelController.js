@@ -108,3 +108,11 @@ export const countByType = async (req, res, next) => {
     next(e);
   }
 };
+
+export const getRooms = async (req, res, next) => {
+  try {
+    const hotel = Hotel.findById(req.params.id);
+  } catch (err) {
+    next(err);
+  }
+};
