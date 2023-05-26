@@ -119,6 +119,7 @@ export const getRooms = async (req, res, next) => {
         return Room.findById(room);
       })
     );
+    res.status(200).json(list);
   } catch (err) {
     next(err);
   }
