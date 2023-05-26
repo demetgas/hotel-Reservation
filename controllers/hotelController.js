@@ -1,4 +1,6 @@
 import Hotel from "../modelsof/Hotel.js";
+import Room from "../modelsof/Room.js";
+
 //Creating a hotel
 export const createHotel = async (req, res, next) => {
   // taking information about hotels from costumers,
