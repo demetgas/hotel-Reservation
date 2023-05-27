@@ -60,7 +60,7 @@ export const updateRoom = async (req, res, next) => {
   }
 };
 
-//Updating existing Rooms
+//Updating existing Room Avb
 export const updateRoomAvb = async (req, res, next) => {
   try {
     await Room.updateOne(
