@@ -63,10 +63,17 @@ export const updateRoom = async (req, res, next) => {
 //Updating existing Rooms
 export const updateRoomAvb = async (req, res, next) => {
   try {
-    await Room.updateOne({ "roomNumber._id": req.params.id });
-    res.status(200).json(updatedRoom);
-  } catch (e) {
-    next(e);
+    await Room.updateOne(
+      { "roomNumbers._id": req.params.id },
+      {
+        $push: {
+          "roomNumbers.$.unavailableDates": req.body.dates,
+        },
+      }
+    );
+    res.status(200).json("You just updated the Room status.");
+  } catch (err) {
+    next(err);
   }
 };
 //Getting a specific Room
