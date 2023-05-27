@@ -19,6 +19,7 @@ router.delete("/:id/:hotelid", verifyAdmin, deleteRoom);
 
 // updating existing rooms
 router.put("/:id", verifyAdmin, updateRoom);
+router.put("/availability/:id", updateRoom);
 
 // getting a specific room
 router.get("/:id", getRoom);
