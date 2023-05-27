@@ -63,17 +63,8 @@ export const updateRoom = async (req, res, next) => {
 //Updating existing Rooms
 export const updateRoomAvb = async (req, res, next) => {
   try {
-    const updatedRoom = await Room.findByIdAndUpdate(
-      req.params.id,
-      { $set: req.body } /*updates*/,
-      { new: true } /*returns the updated version */
-    );
-
-    //if its succesfull we will get the updated Room
-
+    await Room.updateOne({ "roomNumber._id": req.params.id });
     res.status(200).json(updatedRoom);
-
-    //if not we will have an error
   } catch (e) {
     next(e);
   }
